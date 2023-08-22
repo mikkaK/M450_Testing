@@ -1,0 +1,32 @@
+#spring:
+  #config:
+    #import: "optional:configserver:http://${CONFIG_SERVER_HOST:localhost}:8088/"
+server:
+  port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${SERVICE_REGISTRY_HOST:localhost}:${SERVICE_REGISTRY_PORT:8761}/eureka/
+spring:
+  application:
+    name: cover-letter-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:letterix}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:letterix}
+    user: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  cloud:
+    config:
+      enabled: false
+letterix:
+  OPENAI_API_KEY: ${OPENAI_API_KEY:notFound}
