@@ -1,0 +1,20 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark" id="student-table-head">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students" id="student-table-body">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td class="student-table-body-email"><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
