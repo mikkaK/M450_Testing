@@ -3,7 +3,7 @@
 ##### Übung 1
 
 | ID  |Beschreibung   | Voraussetzung | Erwartetes Resultat   |
-|---|---|---|---|---|
+|---|---|---|---|
 | 1  | Der Kunde kauft ein Auto und bekommt keinen Rabbat  | Der Kaufpreis liegt unter dem Minimum für den ein Rabatt gegeben werden kann |  Der Rabatt liegt bei 0 |
 | 2  | Der Kunde kauft ein Auto und bekommt einen Rabatt von angemessenen 5%  | Kaufpreis >= 15'000 && kaufpreis < 20'000  | Der Rabbat liegt bei 5%  |
 | 3  | Der Kunde kauft ein Auto und bekommt einen Rabbat von 7% | Kaufpreis > 20'000 && Kaufpreis < 25'000 | Der Rabbat liegt bei 7%  |
@@ -11,11 +11,11 @@
 
 
 | ID  |Beschreibung   | Voraussetzung | Erwartetes Resultat   |
-|---|---|---|---|---|
+|---|---|---|---|
 | 1 | Der Kunde kauft ein Auto für 12'300 und bekommt keinen Rabbat | Der Kaufpreis liegt unter dem minimum für einen Rabbat | Der Kaufpreis liegt bei den ursprünglichen 12'300 |
 | 2 | Der Kunde kauft ein Auto für 19'800 | Der Kaufpreis erfüllt die Kondition für einen Rabbat von 5% | Der Kaufpreis wird um 5% reduziert. Der finale Kaufpreis liegt bei 18810 |
 | 3 | Der Kunde kauft ein Auto für 21'000 | Der Kaufpreis erfüllt die Kondition für einen Rabbat von 7% | Der Kaufpreis wird um 7% reduziert. Der finale Kaufpreis liegt bei 19'530|
-| 4 | Der Kunde kauft ein Auto für 56'300 | Der Kaufpreis erfüllt die Kondition für den grössten Rabbat | Der Kaufpreis wird um 8.5% reduziert. Der finale Kaufpreis liegt bei 51'514.5
+| 4 | Der Kunde kauft ein Auto für 56'300 | Der Kaufpreis erfüllt die Kondition für den grössten Rabbat | Der Kaufpreis wird um 8.5% reduziert. Der finale Kaufpreis liegt bei 51'514.5 | 
 
 ##### Übung 2
 
