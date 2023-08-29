@@ -25,7 +25,7 @@ describe('Create new student', () => {
     })
       .then(() => {
         cy.get('#student-table-body').last().within(() => {
-          cy.get('td').eq(emailColumnIndex).should('have.text', 'example@example.com')
+          cy.get('td').eq(emailColumnIndex).should('have.text', 'example@example.com') //todo fix failing cy.get('td').eq(emailColumnIndex)
         })
       })
   });
