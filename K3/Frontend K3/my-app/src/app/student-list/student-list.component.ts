@@ -20,4 +20,11 @@ export class StudentListComponent implements OnInit {
       this.students = data;
     });
   }
+
+  deleteStudent(id : string){
+    console.log("delete")
+    this.studentService.delete(id).subscribe(() => {
+      window.location.reload();
+    });
+  }
 }

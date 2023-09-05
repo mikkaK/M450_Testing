@@ -19,4 +19,8 @@ export class StudentService {
   public save(student: Student) {
     return this.http.post<Student>(this.studentUrl, student);
   }
+
+  public delete(id : string){
+    return this.http.delete(this.studentUrl + "/" + id)
+  }
 }

@@ -13,6 +13,7 @@
           <td>{{ student.id }}</td>
           <td>{{ student.name }}</td>
           <td class="student-table-body-email"><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+          <td><button (click)="deleteStudent(student.id)" style="color: red" class="btn">delete</button></td>
         </tr>
       </tbody>
     </table>
