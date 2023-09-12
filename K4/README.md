@@ -64,3 +64,88 @@ Testet die Platform wie sie auf übernormale activity reagiert (botnet angriffe)
 
 ###### Unit Testing 
 Testet kleine teile des codes.
+
+## JUnit
+
+JUnit ist ein Testign Framework für Java Umgebungen.
+Unit Tests werden in eigenen Test Klassen definiert. Darin werden die einzlenen Test Methoden definiert und mit @Test annotiert
+
+##### assertEquals
+Vergleicht zwei Objekte miteinander ob diese gleich sind
+
+let obj1 = new Car(){
+    color: red,
+}
+
+let obj2 = new Car(){
+    color: red,
+}
+
+assertEquals(obj1, obj2) # true
+
+##### assertTrue
+Vergleicht ob ein Rückgabe Wert true oder false ist. Wenn dieser Rückgabe Wert true ist, wurde der Test bestanden
+
+boolean test = methodThatreturnsTrue();
+
+assertTrue(test) # true
+
+##### assertFalse
+Vergleicht ob ein Rückgabe Wert true oder false ist. Wenn dieser Rückgabe Wert false ist, wurde der Test bestanden
+
+boolean test = methodThatreturnsTrue();
+
+assertTrue(test) # false
+
+##### assertNotNull
+Schaut ob ein Wert Null ist oder nicht. Bei einem Null Wert ist der Test fehlgeschlagen
+
+let obj = null
+
+assertNotNull(null) # false
+
+##### assertNull
+Schaut ob ein Wert Null ist oder nicht. Bei einem Null Wert ist der Test bestanden
+
+let obj = null
+
+assertNotNull(null) # true
+
+##### assertArrayEquals
+
+Vergleicht ob zwei arrays gleich sind
+
+let array1 = new Array.of(
+    obj1,
+    obj2,
+    obj3,
+)
+
+let array2 = new Array.of(
+    obj1,
+    obj2,
+    obj3,
+)
+
+assertArrayEquals(array1, array2)
+
+##### @BeforeEach
+
+Mit dieser Annotation kann eine Methode definiert werden, welche vor jedem Test ausgeführt werden soll.
+
+##### @AfterEach
+
+Mit dieser Annotation kann eine Methode definiert werden, welche nach jedem Test ausgeführt werden soll.
+
+https://junit.org/junit4/javadoc/4.8/org/junit/Assert.html
+https://www.vogella.com/tutorials/JUnit/article.html
+
+
+## Bank
+
+Das Bank Objekt ist das wichtigste Objekt. Das Bank Objekt kann keien bis mehrere Accounts besitzen. Das Bank Objekt besitzt die Möglichkeit Mehrere Typen von Konti zu  eröffnen. Auch kann darin Geld abgehoben, eingezahlt oder angezeigt werden.
+
+Das Konto besitzt eine Id, Guthaben und eine Historie an Zahlungen.
+Ein Konto kann auch vin einem anderen Typ sein, wei ein Sparkonto oder Jugendsparkonto
+
+Mehrere Booking Objekts erstellen die Historie. Im einzelnen Objekt wird das Datum und der Geldbetrag geloggt
