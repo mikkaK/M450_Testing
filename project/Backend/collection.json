@@ -1,0 +1,1509 @@
+{
+	"info": {
+		"_postman_id": "ed83cb95-ecc1-412d-a8d7-6f866a8ad4ee",
+		"name": "ueK223 tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Preconditions",
+			"item": [
+				{
+					"name": "login as admin Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const token = pm.response.headers.get(\"Authorization\");\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.environment.set(\"admintoken\", token);\r",
+									"let jsonData = pm.response.json();\r",
+									"pm.environment.set(\"adminid\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@example.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login as user Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Tyler\");\r",
+									"});\r",
+									"const token = pm.response.headers.get(\"Authorization\");\r",
+									"pm.environment.set(\"tyler\", token);\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"pm.environment.set(\"tylerid\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"user@example.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Userdeletes own profile Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin deletes own profile Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{adminid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{adminid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Allowed",
+			"item": [
+				{
+					"name": "login as admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const token = pm.response.headers.get(\"Authorization\");\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.environment.set(\"admintoken\", token);\r",
+									"let jsonData = pm.response.json();\r",
+									"pm.environment.set(\"adminid\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@example.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile as Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"admin profile\");\r",
+									"});\r",
+									"pm.environment.set(\"adminprofileId\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"admin profile\",\r\n    \"age\": 4,\r\n    \"address\": \"admin address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{adminid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin gets all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/userprofile?pageSize=4&page=0&sortBy=age&asc=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userprofile"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "4"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sortBy",
+									"value": "age"
+								},
+								{
+									"key": "asc",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin gets own profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"admin profile\");\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"pm.environment.set(\"adminprofileId\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/userprofile/{{adminid}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userprofile",
+								"{{adminid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin updates own profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Admin Profile Updated as admin\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\": \"{{adminprofileId}}\",\r\n    \"profilePictureURL\": \"Admin Profile Updated as admin\",\r\n    \"age\": 6,\r\n    \"address\": \"Updated Admin Adress\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{adminid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile/{{adminid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{adminid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin deletes own profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{adminid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{adminid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Allowed",
+			"item": [
+				{
+					"name": "login as user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Tyler\");\r",
+									"});\r",
+									"const token = pm.response.headers.get(\"Authorization\");\r",
+									"pm.environment.set(\"tyler\", token);\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"pm.environment.set(\"tylerid\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"user@example.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create profile as user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User profile\");\r",
+									"});\r",
+									"pm.environment.set(\"userprofileId\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"User profile\",\r\n    \"age\": 4,\r\n    \"address\": \"User address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{tylerid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User gets Own profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User profile\");\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"pm.environment.set(\"userprofileId\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/userprofile/{{tylerid}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User updates Own profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"user Profile Updated as user\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\": \"{{userprofileId}}\",\r\n    \"profilePictureURL\": \"user Profile Updated as user\",\r\n    \"age\": 6,\r\n    \"address\": \"Updated user Adress\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{userprofileId}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Userdeletes own profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin User Modify",
+			"item": [
+				{
+					"name": "Create User Profile as Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"runtimeException\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"created User profile as admin\",\r\n    \"age\": 4,\r\n    \"address\": \"user address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{tylerid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create profile as user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User profile\");\r",
+									"});\r",
+									"pm.environment.set(\"userprofileId\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"User profile\",\r\n    \"age\": 4,\r\n    \"address\": \"User address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{tylerid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin updates User profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"user Profile Updated as admin\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\": \"{{userprofileId}}\",\r\n    \"profilePictureURL\": \"user Profile Updated as admin\",\r\n    \"age\": 6,\r\n    \"address\": \"Updated user Adress\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{adminid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin deletes user profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admintoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Admin Modify",
+			"item": [
+				{
+					"name": "User gets Profile List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/userprofile?pageSize=4&page=0&sortBy=age&asc=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userprofile"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "4"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sortBy",
+									"value": "age"
+								},
+								{
+									"key": "asc",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Admin Profile as User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"runtimeException\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"created Admin profile as User\",\r\n    \"age\": 4,\r\n    \"address\": \"admin address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{adminid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User updates Admin profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"runtimeException\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\": \"\",\r\n    \"profilePictureURL\": \"Admin Profile Updated as User\",\r\n    \"age\": 6,\r\n    \"address\": \"Updated Admin Adress\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{adminid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile/{{adminid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{adminid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User deletes admin profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"runtimeException\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{adminid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{adminid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edge Cases",
+			"item": [
+				{
+					"name": "user gets non existing profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"element\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/userprofile/{{tylerid}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Updates non existing Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"element\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\": \"\",\r\n    \"profilePictureURL\": \"user Profile Updated as user\",\r\n    \"age\": 6,\r\n    \"address\": \"Updated user Adress\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{userprofileId}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Profiles 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User profile\");\r",
+									"});\r",
+									"pm.environment.set(\"userprofileId\", jsonData[\"id\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"User profile\",\r\n    \"age\": 4,\r\n    \"address\": \"User address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{tylerid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Profiles 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"runtimeException\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profilePictureURL\": \"User profile\",\r\n    \"age\": 4,\r\n    \"address\": \"User address\",\r\n    \"birthDate\": \"2023-02-23T09:43:59.000+00:00\",\r\n    \"user\": {\r\n        \"id\": \"{{tylerid}}\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/userprofile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User deletes Multiple 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User deletes Multiple 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response contains\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"element\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tyler}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/userprofile/{{tylerid}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"userprofile",
+								"{{tylerid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

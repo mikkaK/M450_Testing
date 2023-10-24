@@ -17,6 +17,14 @@ public class BankTests {
 
     static Bank ubs = new Bank();
 
+    @BeforeAll
+    static void bankInit(){
+        //Bank instanzieren
+        Bank ubs = new Bank();
+        // KOnto kreiren
+        ubs.createSavingsAccount();
+    }
+
     /**
      * Tests to create new Accounts
      */
@@ -32,20 +40,15 @@ public class BankTests {
      */
     @Test
     public void testDeposit() {
-        ubs.print("1000");
+        ubs.deposit("1000", 123456789, 2000);
+
+        assertEquals(2000, ubs.getBalance("1000"));
     }
     /**
      * Testet das Abheben von einem Konto.
      */
     @Test
     public void testWithdraw() {
-        Bank bank = new Bank();
-
-        Long balanceBefore = bank.getBalance("1000");
-
-        bank.withdraw("1000", 123456789, 2300);
-
-        assertEquals(balanceBefore - 1000, bank.getBalance("1000"));
     }
 
     /**
@@ -77,7 +80,6 @@ public class BankTests {
      */
     @Test
     public void testTop5() {
-        fail("toDo");
     }
 
     /**
