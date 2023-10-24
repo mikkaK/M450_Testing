@@ -1,0 +1,38 @@
+body {
+    background-color: #1F1F1F !important;
+    color: white !important;
+}
+.input {
+    border-radius: 100px !important;
+    background-color: #545454 !important;
+    border: 0px solid !important;
+}
+.input fieldset {
+    border-radius: 100px !important;
+}
+.inputDate {
+    border-radius: 100px !important;
+    background-color: #545454 !important;
+    border: 0px solid !important;
+    font-family: "Gellix", sans-serif !important;
+    color: #FFF !important;
+}
+.inputDate fieldset {
+    border-radius: 100px !important;
+}
+.userButton {
+    border-radius: 100px !important;
+    transition: 0.3s !important;
+    box-shadow: none !important;
+}
+.userButtonText {
+    text-transform: capitalize !important;
+    text-decoration: none !important;
+    color: #FFF !important;
+}
+.userCard {
+    background-color: #2D2F31 !important;
+    color: #FFF !important;
+    border-radius: 20px !important;
+    transition: 0.3s !important;
+}
