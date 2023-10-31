@@ -47,7 +47,7 @@ public class AddressbookController {
 
   @PostMapping("/registerUser")
   public ResponseEntity<AddressbookDTO> registerWithoutPassword(@Valid @RequestBody AddressbookDTO addressbookDTO) {
-    Addressbook addressbook = addressbookService.registerUser(addressbookMapper.fromDTO(addressbookDTO));
+    Addressbook addressbook = addressbookService.register(addressbookMapper.fromDTO(addressbookDTO));
     return new ResponseEntity<>(addressbookMapper.toDTO(addressbook), HttpStatus.CREATED);
   }
   @PutMapping("/{id}")
