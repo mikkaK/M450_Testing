@@ -14,13 +14,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            project/Backend
+            project
       - name: Set up JDK 18
         uses: actions/setup-java@v2
         with:
           distribution: 'corretto'
           java-version: '18'
       - name: Run Coverage
+        working-directory: ./Backend
         run: |
           gradle wrapper
           chmod +x gradlew
