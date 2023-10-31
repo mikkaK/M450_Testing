@@ -1,5 +1,4 @@
 import {Box} from '@mui/system';
-import logo from '../../logo1.png';
 import React from "react";
 import {Typography} from "@mui/material";
 import Button from "@mui/material/Button";
@@ -20,17 +19,10 @@ export default function HomePage() {
             justifyContent='center'
             flexDirection={'column'}
         >
-            <h1>Welcome to the Homepage</h1>
-            <img
-                src={logo}
-                style={{filter: 'invert(100%)'}}
-                className='App-logo'
-                alt='logo'
-            />
+            <h1>Geld ist für die, die Reichtum wollen</h1>
 
             <Button
                 className={"userButton"}
-                color='success'
                 variant='contained'
                 onClick={login}
             >
@@ -39,7 +31,7 @@ export default function HomePage() {
                     fontWeight={"bold"}
                     className={"userButtonText"}
                 >
-                    Login
+                    Zum Reichtum
                 </Typography>
             </Button>
         </Box>

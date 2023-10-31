@@ -1,14 +1,14 @@
 body {
-    background-color: #1F1F1F !important;
-    color: white !important;
+    background-color: #f1ffff !important;
+    color: #1e1e1e !important;
 }
 .input {
-    border-radius: 100px !important;
-    background-color: #545454 !important;
+    border-radius: 10px !important;
+    background-color: #f1ffff !important;
     border: 0px solid !important;
 }
 .input fieldset {
-    border-radius: 100px !important;
+    border-radius: 10px !important;
 }
 .inputDate {
     border-radius: 100px !important;
@@ -21,9 +21,10 @@ body {
     border-radius: 100px !important;
 }
 .userButton {
-    border-radius: 100px !important;
+    border-radius: 2px !important;
     transition: 0.3s !important;
     box-shadow: none !important;
+    min-width: 150px;
 }
 .userButtonText {
     text-transform: capitalize !important;
@@ -31,8 +32,12 @@ body {
     color: #FFF !important;
 }
 .userCard {
-    background-color: #2D2F31 !important;
+    background-color: #1e1e1e !important;
     color: #FFF !important;
-    border-radius: 20px !important;
+    border-radius: 5px !important;
     transition: 0.3s !important;
+}
+
+.margin {
+    min-height: 15px;
 }

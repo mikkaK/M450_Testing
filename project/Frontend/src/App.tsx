@@ -2,18 +2,20 @@ import React from 'react';
 
 import './App.css';
 
-import { ActiveUserContextProvider } from './Contexts/ActiveUserContext';
+import ActiveUserContext, { ActiveUserContextProvider } from './Contexts/ActiveUserContext';
 import Router from './Router/Router';
 import {AppBar, Toolbar, Typography} from "@mui/material";
 
 function App() {
+    const context = React.useContext(ActiveUserContext);
   return (
     <ActiveUserContextProvider>
-        <AppBar position="static" sx={{ backgroundColor: "#2D2F31", boxShadow: "none" }}>
+        <AppBar position="static" sx={{ backgroundColor: "#1E1E1E", boxShadow: "none" }}>
             <Toolbar>
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                    OurSpace
+                <Typography variant="h5" sx={{ fontWeight: 200 }}>
+                    Palantir
                 </Typography>
+                {context.user?.firstName + context.user?.lastName}
             </Toolbar>
         </AppBar>
       <Router />
