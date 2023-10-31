@@ -2,8 +2,6 @@ name: Measure coverage
 
 on:
   pull_request:
-    paths:
-      - project/Backend
       
 jobs:
   build:
