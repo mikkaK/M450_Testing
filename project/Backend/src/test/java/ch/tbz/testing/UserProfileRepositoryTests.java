@@ -1,4 +1,4 @@
-package ch.tbz.testing.userprofile;
+package ch.tbz.testing;
 
 import ch.tbz.testing.domain.user.User;
 import ch.tbz.testing.domain.user.UserService;
@@ -21,7 +21,7 @@ import java.util.*;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql("/test-data-repository.sql")
-class UserProfileRepositoryIT {
+class UserProfileRepositoryTests {
 
     @Autowired
     private UserProfileRepository userProfileRepository;
