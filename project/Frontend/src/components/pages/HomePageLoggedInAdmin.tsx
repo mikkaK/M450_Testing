@@ -31,75 +31,45 @@ export default function HomePageLoggedInAdmin() {
                 <Grid item md={4} lg={4} p={2}>
                     <Card className={"userCard"} sx={{boxShadow: "none"}}>
                         <CardContent>
-                            <h1>Welcome to the Admin Homepage</h1>
+                            <h1>Admin Home</h1>
                             <Button
                                 className={"userButton"}
-                                color='success'
                                 variant='contained'
                                 onClick={handleAdd}
                             >
-                                <Typography
-                                    variant="body2"
-                                    fontWeight={"bold"}
-                                    className={"userButtonText"}
-                                >
-                                    Create a Profile
-                                </Typography>
+                                Profil erstellen
                             </Button>
-
+                            <div className={"margin"}></div>
                             <Button
                                 className={"userButton"}
-                                color='info'
                                 variant='contained'
-                                sx={{my: 1}}
+                                onClick={() => handleEdit(context.user!.id)}
                             >
-                                <Typography
-                                    variant="body2"
-                                    fontWeight={"bold"}
-                                    className={"userButtonText"}
-                                    onClick={() => handleEdit(context.user!.id)}
-                                >
-                                    Edit Profile
-                                </Typography>
+                                Profil bearbeiten
                             </Button>
-
+                            <div className={"margin"}></div>
                             <Button
                                 className={"userButton"}
-                                color='secondary'
                                 variant='contained'
                             >
                                 <NavLink to={"/userprofile"} className={"userButtonText"}>
-                                    <Typography
-                                        variant="body2"
-                                        fontWeight={"bold"}
-                                        className={"userButtonText"}
-                                    >
-                                        See all Profiles
-                                    </Typography>
+                                        Alle Profile
                                 </NavLink>
                             </Button>
-
+                            <div className={"margin"}></div>
                             <Button
+                                color={"error"}
                                 className={"userButton"}
-                                color='error'
                                 variant='contained'
-                                sx={{my: 1}}
                                 onClick={context.logout}
                             >
-                                <Typography
-                                    variant="body2"
-                                    fontWeight={"bold"}
-                                    className={"userButtonText"}
-                                >
-                                    Logout
-                                </Typography>
+                                    Abmelden
                             </Button>
                             <Typography
                                 variant="body2"
                                 fontWeight={"bold"}
                                 sx={{mt: 2}}
                             >
-                                Logged in as: {context.user?.firstName} {context.user?.lastName}
                             </Typography>
                         </CardContent>
                     </Card>

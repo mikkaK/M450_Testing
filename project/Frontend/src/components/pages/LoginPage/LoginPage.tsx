@@ -50,10 +50,7 @@ const Login = () => {
                 <Card className={"userCard"}>
                     <CardContent>
                         <Grid>
-                            <h2>Sign In</h2>
-                            <p>Default login:</p>
-                            <p>email: admin@example.com</p>
-                            <p>pw: 1234</p>
+                            <h2>Anmelden</h2>
                         </Grid>
 
                         <Formik
@@ -75,7 +72,7 @@ const Login = () => {
                                     <TextField
                                         id='email'
                                         className={"input"}
-                                        placeholder='Enter username'
+                                        placeholder='admin@example.com'
                                         fullWidth
                                         required
                                         autoFocus
@@ -92,7 +89,7 @@ const Login = () => {
                                     <TextField
                                         id='password'
                                         className={"input"}
-                                        placeholder='Enter password'
+                                        placeholder='1234'
                                         type='password'
                                         fullWidth
                                         required
@@ -119,18 +116,19 @@ const Login = () => {
                                             fontWeight={"bold"}
                                             className={"userButtonText"}
                                         >
-                                            Sign in
+                                            Anmelden
                                         </Typography>
                                     </Button>
                                 </Form>
                             )}
                         </Formik>
                         <Typography>
-                            <Link href='#'>Forgot password ?</Link>
+                            {'Passwort vergessen? '}
+                            <Link href='#'>Zurücksetzen</Link>
                         </Typography>
                         <Typography>
-                            {' '}
-                            Do you have an account ?<Link href='#'>Sign Up</Link>
+                            {'Kein Konto? '}
+                            <Link href='#'>Registrieren</Link>
                         </Typography>
                     </CardContent>
                 </Card>

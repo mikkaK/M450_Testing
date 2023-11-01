@@ -1,38 +1,43 @@
 body {
-    background-color: #1F1F1F !important;
-    color: white !important;
+    background-color: #f1ffff ;
+    color: #1e1e1e ;
 }
 .input {
-    border-radius: 100px !important;
-    background-color: #545454 !important;
-    border: 0px solid !important;
+    border-radius: 10px ;
+    background-color: #f1ffff ;
+    border: 0px solid ;
 }
 .input fieldset {
-    border-radius: 100px !important;
+    border-radius: 10px ;
 }
 .inputDate {
-    border-radius: 100px !important;
-    background-color: #545454 !important;
-    border: 0px solid !important;
-    font-family: "Gellix", sans-serif !important;
-    color: #FFF !important;
+    border-radius: 100px ;
+    background-color: #545454 ;
+    border: 0px solid ;
+    font-family: "Gellix", sans-serif ;
+    color: #FFF ;
 }
 .inputDate fieldset {
-    border-radius: 100px !important;
+    border-radius: 100px ;
 }
 .userButton {
-    border-radius: 100px !important;
-    transition: 0.3s !important;
-    box-shadow: none !important;
+    border-radius: 2px ;
+    transition: 0.3s ;
+    box-shadow: none ;
+    min-width: 150px;
 }
 .userButtonText {
-    text-transform: capitalize !important;
-    text-decoration: none !important;
-    color: #FFF !important;
+    text-transform: capitalize ;
+    text-decoration: none ;
+    color: #FFF ;
 }
 .userCard {
-    background-color: #2D2F31 !important;
+    background-color: #1e1e1e !important;
     color: #FFF !important;
-    border-radius: 20px !important;
-    transition: 0.3s !important;
+    border-radius: 5px ;
+    transition: 0.3s ;
+}
+
+.margin {
+    min-height: 15px;
 }
