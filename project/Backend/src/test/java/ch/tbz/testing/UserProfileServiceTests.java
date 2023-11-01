@@ -1,4 +1,4 @@
-package ch.tbz.testing.userprofile;
+package ch.tbz.testing;
 
 import ch.tbz.testing.domain.user.User;
 import ch.tbz.testing.domain.user.UserService;
@@ -20,7 +20,7 @@ import java.util.*;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql("/test-data-service.sql")
-class UserServiceIT {
+class UserProfileServiceTests {
     @Autowired
     private UserProfileService userProfileService;
 

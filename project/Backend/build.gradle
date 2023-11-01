@@ -72,10 +72,10 @@ jacocoTestCoverageVerification {
 		}
 
 		rule {
-			enabled = false
+			enabled = true
 			element = 'CLASS'
 			includes = ['ch.tbz.testing.domain.*']
-			excludes = ['ch.tbz.testing.domain.*DTO']
+			excludes = ['ch.tbz.testing.domain.*.dto.*']
 
 			limit {
 				counter = 'LINE'
@@ -84,4 +84,34 @@ jacocoTestCoverageVerification {
 			}
 		}
 	}
+}
+
+tasks.create(name: "testCoverage", type: JacocoReport, dependsOn: "test") {
+
+	group = "verification"
+	description = "Generate Jacoco coverage reports for the test build."
+
+	reports {
+		html.required.set(true)
+		xml.required.set(true)
+	}
+
+	def excludes = [
+			'**/*Tests*.*',
+			'**/actions/*.*',
+			'**/core/**/*.*',
+			'**/markers/*.*',
+			'**/toolwindow/*.*',
+			'**/utils/*.*',
+			'**/dto/*.*'
+	]
+
+	def javaClasses = fileTree(dir: "${buildDir}/classes/java/main", excludes: excludes)
+	classDirectories.from = files([javaClasses])
+
+	sourceDirectories.from = files([
+			"$project.projectDir/src/main/java/ch/tbz/testing/domain",
+	])
+
+	executionData.from = files("${project.buildDir}/jacoco/test.exec")
 }
