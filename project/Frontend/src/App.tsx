@@ -15,7 +15,7 @@ function App() {
                 <Typography variant="h5" sx={{ fontWeight: 200 }}>
                     Palantir
                 </Typography>
-                {context.user?.firstName + context.user?.lastName}
+                {context.user?.firstName}
             </Toolbar>
         </AppBar>
       <Router />

@@ -19,7 +19,7 @@ export default function HomePage() {
             justifyContent='center'
             flexDirection={'column'}
         >
-            <h1>Geld ist für die, die Reichtum wollen</h1>
+            <h1>Geld ist für die, die Reichtum wollen!</h1>
 
             <Button
                 className={"userButton"}
