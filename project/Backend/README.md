@@ -1,8 +1,5 @@
 # README #
 
-## Beschreibung
-Spring Boot-Backend zum üK223 für die Gruppenspezifische Arbeit der Erstellung von Benutzerprofilen.
-
 ## Start Projekt Spring Boot
 Voraussetzungen:
 <ul>
