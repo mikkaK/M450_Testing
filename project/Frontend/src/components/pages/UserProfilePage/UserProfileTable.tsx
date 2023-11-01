@@ -20,15 +20,15 @@ const UserProfileTable = () => {
     const pageSize = 4;
 
     const sortByOptions = [
-        {label: 'Age', value: 'age'},
-        {label: 'Address', value: 'address'},
-        {label: 'Profile Picture URL', value: 'profilePictureURL'},
-        {label: 'Birth Date', value: 'birthDate'},
+        {label: 'Alter', value: 'age'},
+        {label: 'Addresse', value: 'address'},
+        {label: 'Profilbild URL', value: 'profilePictureURL'},
+        {label: 'Geburtsdatum', value: 'birthDate'},
     ];
 
     const ascOrDesc = [
-        {label: 'Descending', value: "false"},
-        {label: 'Ascending', value: "true"},
+        {label: 'Absteigend', value: "false"},
+        {label: 'Aufsteigend', value: "true"},
     ];
 
     const handleAscDesc = () => {
@@ -67,6 +67,7 @@ const UserProfileTable = () => {
 
     const handleDelete = (id: string) => {
         UserProfileService.deleteUserProfile(id);
+        window.location.reload();
     };
 
     return (
@@ -74,7 +75,7 @@ const UserProfileTable = () => {
             <Grid container columns={{xs: 6, sm: 9, md: 12}} p={2}>
                 <Grid item xs={3} sm={4.5} md={6} p={1}>
                     <Typography sx={{fontWeight: 600}} className="typography">
-                        Sort by
+                        Sortieren nach
                     </Typography>
                     <Select
                         name={"sortBy"}
@@ -83,6 +84,7 @@ const UserProfileTable = () => {
                         onChange={(e) => setSortBy(e.target.value)}
                         fullWidth
                         sx={{
+                            backgroundColor: "#1e1e1e",
                             color: "white !important",
                             '.MuiInput-input': {
                                 color: "white !important",
@@ -110,7 +112,7 @@ const UserProfileTable = () => {
                 </Grid>
                 <Grid item xs={3} sm={4.5} md={6} p={1}>
                     <Typography sx={{fontWeight: 600}} className="typography">
-                        Ascending or Descending
+                        Aufsteigend / Absteigen
                     </Typography>
                     <Select
                         name={"ascOrDesc"}
@@ -119,6 +121,7 @@ const UserProfileTable = () => {
                         onChange={handleAscDesc}
                         fullWidth
                         sx={{
+                            backgroundColor: "#1e1e1e",
                             color: "white !important",
                             '.MuiInput-input': {
                                 color: "white !important",
@@ -146,7 +149,7 @@ const UserProfileTable = () => {
                 </Grid>
                 <Grid item xs={6} sm={9} md={12} p={1}>
                     <Typography sx={{fontWeight: 600}} className="typography">
-                        Page {currentPage + 1} of {userProfiles.length === pageSize ? currentPage + 2 : currentPage + 1}
+                        Seite {currentPage + 1} von {userProfiles.length === pageSize ? currentPage + 2 : currentPage + 1}
                     </Typography>
                 </Grid>
                 {userProfiles.map((userProfile) => (
@@ -159,7 +162,7 @@ const UserProfileTable = () => {
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    User: {userProfile.user?.firstName} {userProfile.user?.lastName}
+                                    Benutzer: {userProfile.user?.firstName} {userProfile.user?.lastName}
                                 </Typography>
                                 <Typography
                                     gutterBottom
@@ -167,7 +170,7 @@ const UserProfileTable = () => {
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    Age:
+                                    Alter:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -185,7 +188,7 @@ const UserProfileTable = () => {
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    ProfilePictureURL:
+                                    Profilbild URL:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -203,7 +206,7 @@ const UserProfileTable = () => {
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    Address:
+                                    Addresse:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -221,7 +224,7 @@ const UserProfileTable = () => {
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    Birth Date:
+                                    Geburtsdatum:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -246,7 +249,7 @@ const UserProfileTable = () => {
                                             fontWeight={"bold"}
                                             className={"userButtonText"}
                                         >
-                                            Edit
+                                            Bearbeiten
                                         </Typography>
                                     </Button>
                                     <Button
@@ -261,7 +264,7 @@ const UserProfileTable = () => {
                                             fontWeight={"bold"}
                                             className={"userButtonText"}
                                         >
-                                            Delete
+                                            Löschen
                                         </Typography>
                                     </Button>
                                 </CardActions>
@@ -288,7 +291,7 @@ const UserProfileTable = () => {
                             fontWeight={"bold"}
                             className={"userButtonText"}
                         >
-                            Previous
+                            Vorherige
                         </Typography>
                     </Button>
                     <Button
@@ -303,7 +306,7 @@ const UserProfileTable = () => {
                             fontWeight={"bold"}
                             className={"userButtonText"}
                         >
-                            Next
+                            Nächste
                         </Typography>
                     </Button>
                 </Grid>
@@ -322,7 +325,7 @@ const UserProfileTable = () => {
                             fontWeight={"bold"}
                             className={"userButtonText"}
                         >
-                            Add
+                            Hinzufügen
                         </Typography>
                     </Button>
                 </Grid>
@@ -358,7 +361,7 @@ const UserProfileTable = () => {
                                 fontWeight={"bold"}
                                 className={"userButtonText"}
                             >
-                                Back
+                                Zurück
                             </Typography>
                         </NavLink>
                     </Button>

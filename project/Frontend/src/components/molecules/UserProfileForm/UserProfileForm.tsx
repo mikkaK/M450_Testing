@@ -46,14 +46,14 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                     <Grid item md={4}/>
                     <Grid item xs={12} md={4} p={1}>
                         <Typography sx={{fontWeight: 600}} variant="h4">
-                            User Profile Form
+                            Benutzerprofil Formular
                         </Typography>
                         <form onSubmit={formik.handleSubmit}>
                             <Card className={"userCard"}>
                                 <CardContent>
                                     <Box>
                                         <Typography sx={{fontWeight: 600}}>
-                                            Age
+                                            Alter
                                         </Typography>
                                         <TextField
                                             fullWidth
@@ -69,7 +69,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                             <div style={{color: 'red'}}>{formik.errors.age}</div>
                                         ) : null}
                                         <Typography sx={{fontWeight: 600}}>
-                                            Profile Picture URL
+                                            Profilbild URL
                                         </Typography>
                                         <TextField
                                             fullWidth
@@ -85,7 +85,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                             <div style={{color: 'red'}}>{formik.errors.profilePictureURL}</div>
                                         ) : null}
                                         <Typography sx={{fontWeight: 600}}>
-                                            Address
+                                            Addresse
                                         </Typography>
                                         <TextField
                                             fullWidth
@@ -102,7 +102,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                             <div style={{color: 'red'}}>{formik.errors.address}</div>
                                         ) : null}
                                         <Typography sx={{fontWeight: 600}}>
-                                            Birth Date
+                                            Geburtsdatum
                                         </Typography>
                                         <TextField
                                             id='birthDate'
@@ -138,7 +138,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                                 fontWeight={"bold"}
                                                 className={"userButtonText"}
                                             >
-                                                Cancel
+                                                Abbrechen
                                             </Typography>
                                         </Button>
                                         <Button
@@ -154,8 +154,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                                 fontWeight={"bold"}
                                                 className={"userButtonText"}
                                             >
-                                                {userProfile.id && 'Save'}
-                                                {!userProfile.id && 'Finish'}
+                                               Speichern
                                             </Typography>
                                         </Button>
                                     </div>
@@ -175,7 +174,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                     <Grid item md={4}/>
                     <Grid item xs={12} md={4} p={1}>
                         <Typography variant="h3" sx={{fontWeight: 600, mt: 2}}>
-                            Your Profile
+                            Dein Profil
                         </Typography>
                         <Card className={"userCard"} sx={{boxShadow: "none"}}>
                             <CardContent>
@@ -185,7 +184,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    User: {userProfile.user?.firstName} {userProfile.user?.lastName}
+                                    Benutzer: {userProfile.user?.firstName} {userProfile.user?.lastName}
                                 </Typography>
                                 <Typography
                                     gutterBottom
@@ -193,7 +192,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    Age:
+                                    Alter:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -211,7 +210,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    ProfilePictureURL:
+                                    Profilbild URL:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -229,7 +228,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    Address:
+                                    Addresse:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -247,7 +246,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                     fontWeight={"bold"}
                                     component="div"
                                 >
-                                    Birth Date:
+                                    Geburtsdatum:
                                 </Typography>
                                 <Paper elevation={1} sx={{padding: "3px"}}>
                                     <Typography
@@ -263,14 +262,14 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                             </CardContent>
                         </Card>
                         <Typography variant="h4" sx={{fontWeight: 600, mt: 2}}>
-                            Edit Profile
+                            Profil bearbeiten
                         </Typography>
                         <form onSubmit={formik.handleSubmit}>
                             <Card className={"userCard"}>
                                 <CardContent>
                                     <Box>
                                         <Typography sx={{fontWeight: 600}}>
-                                            Age
+                                            Alter
                                         </Typography>
                                         <TextField
                                             fullWidth
@@ -286,7 +285,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                             <div style={{color: 'red'}}>{formik.errors.age}</div>
                                         ) : null}
                                         <Typography sx={{fontWeight: 600}}>
-                                            Profile Picture URL
+                                            Profilbild URL
                                         </Typography>
                                         <TextField
                                             fullWidth
@@ -302,7 +301,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                             <div style={{color: 'red'}}>{formik.errors.profilePictureURL}</div>
                                         ) : null}
                                         <Typography sx={{fontWeight: 600}}>
-                                            Address
+                                            Addresse
                                         </Typography>
                                         <TextField
                                             fullWidth
@@ -319,7 +318,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                             <div style={{color: 'red'}}>{formik.errors.address}</div>
                                         ) : null}
                                         <Typography sx={{fontWeight: 600}}>
-                                            Birth Date
+                                            Geburtsdatum
                                         </Typography>
                                         <TextField
                                             id='birthDate'
@@ -356,7 +355,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                                 fontWeight={"bold"}
                                                 className={"userButtonText"}
                                             >
-                                                Back
+                                                Zurück
                                             </Typography>
                                         </Button>
                                         <Button
@@ -372,7 +371,7 @@ const UserProfileForm = ({userProfile, submitActionHandler}: UserProfileProps) =
                                                 fontWeight={"bold"}
                                                 className={"userButtonText"}
                                             >
-                                                Save
+                                                Speichern
                                             </Typography>
                                         </Button>
                                     </div>
